@@ -1,0 +1,28 @@
+﻿@section script{
+    <script type="text/javascript">
+        $(document).ready(function(){
+       
+        });
+</script>
+    }
+@{
+    ViewBag.Title = "ListeLecteur";
+}
+@model IEnumerable<DAL.Lecteur>
+@using GridMvc.Html
+
+<h2>Liste des Lecteurs</h2>
+
+@Html.Grid(Model).Columns(colonnes =>{
+
+    colonnes.Add(c => c.Code).Sortable(true).Filterable(true).Titled("Code");
+    colonnes.Add(c => c.Utilisateur.NomComplet).Sortable(true).Titled("Nom Complet");
+    colonnes.Add(c => c.Tel).Sortable(true).Titled("Numero telephone");
+    colonnes.Add(c => c.Email).Sortable(true).Titled("Email");
+    colonnes.Add(c => c.Adresse).Sortable(true).Titled("Adresse");
+ 
+    colonnes.Add().Sanitized(false).Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Editer", "editLecteur", new { id = c.UtilisateurId }));
+    colonnes.Add().Sanitized(false).Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Supprimer", "editLecteur", new { id = c.UtilisateurId }));
+    }).WithPaging(3)

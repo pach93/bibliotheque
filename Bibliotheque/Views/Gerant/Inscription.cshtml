@@ -1,0 +1,69 @@
+﻿@model DAL.Lecteur
+
+@{
+    ViewBag.Title = "Inscription";
+}
+
+<h2>Inscription</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Lecteur</legend>
+
+        <div class="editor-label">
+            <label> Code</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+
+       <div class="editor-label">
+           <label>Nom Complet</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Utilisateur.NomComplet)
+            @Html.ValidationMessageFor(model => model.Utilisateur.NomComplet)
+        </div>
+
+        <div class="editor-label">
+            <label>Telephone</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tel)
+            @Html.ValidationMessageFor(model => model.Tel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adresse)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse)
+            @Html.ValidationMessageFor(model => model.Adresse)
+        </div>
+
+        <p>
+            
+        </p>
+         <input type="submit" value="create" />
+    </fieldset>
+   <input  name="Utilisateur.profil" type="hidden" value="lecteur" />    <input  name="Utilisateur.Login" type="hidden" value="@Model.Code" />    <input  name="Utilisateur.Pass" type="hidden" value="passer" />   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

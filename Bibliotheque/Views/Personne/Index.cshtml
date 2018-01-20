@@ -1,0 +1,42 @@
+﻿@model Bibliotheque.Models.Personne
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<form method="POST" action="/Personne/index">
+    id <input type="text" name="Id" value="@Model.Id"/>
+    Nom <input type="text" name="Nom" value=""/>
+    Email <input type="text" name="Email" value=""/>
+    Tel <input type="text" name="Tel" value=""/>
+    <input type="submit" />
+</form>
+<br />
+@using (Html.BeginForm(actionName:"Index",controllerName:"Personne",method:FormMethod.Post)){
+
+   <table>
+       <tr>
+           <td>Id</td> 
+           <td>@Html.TextBoxFor(model=>model.Id)</td> 
+       </tr>
+       <tr>
+           <td>Nom</td>
+            <td>@Html.TextBoxFor(model=>model.Nom)</td>
+
+       </tr>
+       <tr>
+           <td>Email</td>
+           <td>@Html.TextBoxFor(model=>model.Email)</td>
+
+       </tr>
+       <tr>
+           <td>Tel</td>
+           <td>@Html.TextBoxFor(model=>model.Tel)</td>
+       </tr>
+       <tr>
+           <td colspan="2">
+               <input type="submit" />
+           </td>
+       </tr>
+   </table>
+}
